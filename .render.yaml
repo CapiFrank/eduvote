@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: laravel-inertia-reverb
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    startCommand: /usr/bin/supervisord -c /etc/supervisord.conf
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: false
+      - key: BROADCAST_DRIVER
+        value: reverb
+      - key: REVERB_APP_ID
+        value: tu-app-id
+      - key: REVERB_APP_KEY
+        value: tu-app-key
+      - key: REVERB_APP_SECRET
+        value: tu-app-secret
+      - key: REVERB_HOST
+        value: 0.0.0.0
+      - key: REVERB_PORT
+        value: 6001
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: tu-db-host
+      - key: DB_PORT
+        value: 3306
+      - key: DB_DATABASE
+        value: tu-db
+      - key: DB_USERNAME
+        value: tu-user
+      - key: DB_PASSWORD
+        value: tu-password
